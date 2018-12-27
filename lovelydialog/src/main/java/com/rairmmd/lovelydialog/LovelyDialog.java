@@ -1,15 +1,11 @@
 package com.rairmmd.lovelydialog;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -42,7 +38,7 @@ public class LovelyDialog {
     private int mBarColor;
     private Animation mAnimation;
     private Icon mVisible;
-    private boolean cancelable;
+    private boolean mCancelable;
 
     private LovelyDialogCallback mPositiveCallback;
     private LovelyDialogCallback mNegativeCallback;
@@ -62,7 +58,7 @@ public class LovelyDialog {
         this.mPositiveColor = builder.mPositiveColor;
         this.mNegativeColor = builder.mNegativeColor;
         this.mBarColor = builder.mBarColor;
-        this.cancelable = builder.cancelable;
+        this.mCancelable = builder.mCancelable;
     }
 
     public static class Builder {
@@ -82,13 +78,14 @@ public class LovelyDialog {
         private int mBarColor;
         private Animation mAnimation;
         private Icon mVisible;
-        private boolean cancelable;
+        private boolean mCancelable;
 
         private LovelyDialogCallback mPositiveCallback;
         private LovelyDialogCallback mNegativeCallback;
 
         public Builder(Context mContext) {
             this.mContext = mContext;
+            this.mCancelable = true;
         }
 
         public Builder setTitle(String mTitle) {
@@ -138,7 +135,7 @@ public class LovelyDialog {
         }
 
         public Builder isCancelable(boolean cancelable) {
-            this.cancelable = cancelable;
+            this.mCancelable = cancelable;
             return this;
         }
 
@@ -173,7 +170,7 @@ public class LovelyDialog {
             if (mDialog.getWindow() != null) {
                 mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             }
-            mDialog.setCancelable(cancelable);
+            mDialog.setCancelable(mCancelable);
             mDialog.setContentView(R.layout.layout_dialog);
             mBarBackground = mDialog.findViewById(R.id.bar_background);
             mTvTitle = mDialog.findViewById(R.id.tv_title);

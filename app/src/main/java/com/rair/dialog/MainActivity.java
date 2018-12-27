@@ -24,8 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         new LovelyDialog.Builder(this).setTitle("LoveLy Dialog").setContent("一个好看的Dialog")
-                .setAnimation(Animation.SLIDE).setIcon(R.mipmap.ic_launcher_round, Icon.VISIBLE)
-                .setBarColor(R.color.colorPrimaryDark).onPositive(new LovelyDialogCallback() {
+                .setAnimation(Animation.POP).setIcon(R.mipmap.ic_launcher_round, Icon.VISIBLE)
+                .setBarColor(R.color.colorPrimaryDark).setPositiveColor(R.color.colorAccent)
+                .setNegativeColor(R.color.colorPrimary).onPositive(new LovelyDialogCallback() {
             @Override
             public void onClick(@NonNull Dialog dialog) {
                 showToast("你点击了Positive按钮");
