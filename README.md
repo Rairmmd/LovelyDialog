@@ -23,4 +23,4 @@ new LovelyDialog.Builder(this).setTitle("LoveLy Dialog").setContent("一个好�
         }
     }).build().show();
 ```
-[0]:https://github.com/Rairmmd/lovelydialog/blob/master/device-2018-12-27-011451.png
+[0]:https://github.com/Rairmmd/lovelydialog/blob/master/device-2019-05-03-161044.png
