@@ -4,6 +4,10 @@ A lovely Dialog
 ![0]
 
 ### usage
+```
+implementation 'com.rairmmd:lovelydialog:1.0.0'
+```
+
 ```java
 new LovelyDialog.Builder(this).setTitle("LoveLy Dialog").setContent("一个好看的Dialog")
     .setAnimation(Animation.SLIDE).setIcon(R.mipmap.ic_launcher_round, Icon.VISIBLE)
@@ -17,6 +21,6 @@ new LovelyDialog.Builder(this).setTitle("LoveLy Dialog").setContent("一个好�
         public void onClick(@NonNull Dialog dialog) {
             showToast("你点击了Negative按钮");
         }
-    }).show();
+    }).build().show();
 ```
 [0]:https://github.com/Rairmmd/lovelydialog/blob/master/device-2018-12-27-011451.png

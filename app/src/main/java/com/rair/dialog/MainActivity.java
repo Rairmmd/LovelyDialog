@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(@NonNull Dialog dialog) {
                 showToast("你点击了Negative按钮");
             }
-        }).show();
+        }).build().show();
     }
 
     private void showToast(String s) {

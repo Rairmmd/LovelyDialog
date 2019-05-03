@@ -157,6 +157,7 @@ public class LovelyDialog {
             Button mPositiveBtn;
             Button mNegativeBtn;
             View mBarBackground;
+
             if (mAnimation == Animation.POP) {
                 mDialog = new Dialog(mContext, R.style.PopTheme);
             } else if (mAnimation == Animation.SIDE) {
@@ -178,8 +179,18 @@ public class LovelyDialog {
             mIvIcon = mDialog.findViewById(R.id.iv_icon);
             mNegativeBtn = mDialog.findViewById(R.id.btn_negative);
             mPositiveBtn = mDialog.findViewById(R.id.btn_positive);
-            mTvTitle.setText(mTitle);
-            mTvContent.setText(mContent);
+            if (TextUtils.isEmpty(mTitle)) {
+                mTvTitle.setVisibility(View.GONE);
+            } else {
+                mTvTitle.setVisibility(View.VISIBLE);
+                mTvTitle.setText(mTitle);
+            }
+            if (TextUtils.isEmpty(mContent)) {
+                mTvContent.setVisibility(View.GONE);
+            } else {
+                mTvContent.setVisibility(View.VISIBLE);
+                mTvContent.setText(mContent);
+            }
             if (mPositiveColor != 0) {
                 GradientDrawable bgShape = (GradientDrawable) mPositiveBtn.getBackground();
                 bgShape.setColor(mPositiveColor);
@@ -198,7 +209,9 @@ public class LovelyDialog {
                 GradientDrawable bgShape = (GradientDrawable) mBarBackground.getBackground();
                 bgShape.setColor(mBarColor);
             }
-            mIvIcon.setImageResource(mIcon);
+            if (mIcon != 0) {
+                mIvIcon.setImageResource(mIcon);
+            }
             if (mVisible == Icon.VISIBLE) {
                 mIvIcon.setVisibility(View.VISIBLE);
             } else {
@@ -230,16 +243,73 @@ public class LovelyDialog {
                     }
                 });
             }
-            mDialog.show();
             return new LovelyDialog(this);
         }
+    }
 
-        public void show() {
-            if (mDialog == null) {
-                build();
-            } else {
-                mDialog.show();
-            }
+    public void show() {
+        if (mDialog != null) {
+            mDialog.show();
         }
+    }
+
+    public String getTitle() {
+        return mTitle;
+    }
+
+    public String getContent() {
+        return mContent;
+    }
+
+    public String getPositiveText() {
+        return mPositiveText;
+    }
+
+    public String getNegativeText() {
+        return mNegativeText;
+    }
+
+    public Context getContext() {
+        return mContext;
+    }
+
+    public int getIcon() {
+        return mIcon;
+    }
+
+    public int getPositiveColor() {
+        return mPositiveColor;
+    }
+
+    public int getNegativeColor() {
+        return mNegativeColor;
+    }
+
+    public int getBarColor() {
+        return mBarColor;
+    }
+
+    public Animation getAnimation() {
+        return mAnimation;
+    }
+
+    public Icon getVisible() {
+        return mVisible;
+    }
+
+    public boolean isCancelable() {
+        return mCancelable;
+    }
+
+    public LovelyDialogCallback getPositiveCallback() {
+        return mPositiveCallback;
+    }
+
+    public LovelyDialogCallback getNegativeCallback() {
+        return mNegativeCallback;
+    }
+
+    public static Dialog getDialog() {
+        return mDialog;
     }
 }
